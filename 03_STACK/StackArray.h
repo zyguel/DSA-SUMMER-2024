@@ -16,7 +16,7 @@ bool stack_push(SAL *s, int elem);
 bool isEmpty(SAL s);
 bool isFull(SAL s);
 int stack_peek(SAL *s);
-void display(SAL *s);
+void display(SAL s);
 void visualize(SAL s);
 
 #endif
