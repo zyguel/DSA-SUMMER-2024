@@ -59,6 +59,8 @@ int stack_peek(SAL *s){
 
 
 void display(SAL s){
+	SAL temp;
+	initStack(&temp);
 	if(isEmpty(s)){
 		printf("\n\nNothing to Display; STACK IS EMPTY!\n\n");
 		return;
@@ -75,5 +77,10 @@ void visualize(SAL s){
 	if(isEmpty(s)){
 		printf("\n\nNothing to Visualize; STACK IS EMPTY!\n\n");
 		return;
+	}
+	int i;
+	printf("\tINDEX\tDATA\tTOP");
+	for(i = 0; i <= s->top; i++){
+		printf("\t");
 	}
 }
