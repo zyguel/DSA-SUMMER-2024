@@ -17,8 +17,9 @@ bool stack_pop(SAL *s){
 		printf("\n\nNothing to POP; STACK IS EMPTY!\n\n");
 		return false;
 	}		
+	
 	s->data[s->top] = 0;
-		s->top--;
+	s->top--;
 	printf("\n\nPOP Successful!\n\n");
 	return true;
 	
@@ -58,9 +59,21 @@ int stack_peek(SAL *s){
 
 
 void display(SAL s){
-	
+	if(isEmpty(s)){
+		printf("\n\nNothing to Display; STACK IS EMPTY!\n\n");
+		return;
+	}
+	int i;
+	printf("\n\n<===BOTTOM ");
+	for(i = 0; i <= s->top; i++){
+		printf("%d ", s->data[i]);
+	}
+	printf("TOP ===>\n\n");
 }
 
 void visualize(SAL s){
-	
+	if(isEmpty(s)){
+		printf("\n\nNothing to Visualize; STACK IS EMPTY!\n\n");
+		return;
+	}
 }
