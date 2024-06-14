@@ -34,9 +34,9 @@ SLL* createNode(int data) {
 
 bool stack_pop(SLL **top){
 	if(!isEmpty(*top)){
-		//SLL *temp = *top;
+		SLL *temp = *top;
 		*top = (*top)->link;
-	
+		free(temp);
 		return true;
 	}
 	return false;
@@ -68,6 +68,19 @@ int stack_peek(SLL *top){
 	return top->data;
 }
 void display(SLL *top){
+	 if(isEmpty(top)){
+        printf("\nNothing to Display Stack Link List is Empty\n");
+        return;
+    }
+    printf("\n\n<===TOP ");
+    SLL* current = top;
+    while(current!= NULL && !isEmpty(current)){
+        printf("%d ", current->data);
+        current = current->link;
+    }
+    printf("BOTTOM ===>\n\n");
+
+	/*
 	if(isEmpty(top)){
 		printf("\nNothing to Display Stack Link List is Empty\n");
 		return;
@@ -87,7 +100,8 @@ void display(SLL *top){
 	}
 	printf("TOP ===>\n\n");
 	free(temp);
-	free(temp2);
+	free(temp2);*/
+	
 }
 void visualize(SLL *top){
  	if(isEmpty(top)){ // Now compatible with the expected argument type
@@ -105,10 +119,10 @@ void visualize(SLL *top){
     printf("\n\n\tINDEX\tDATA\tTOP\n");
     int i = 0; // Initialize index counter
     SLL *current = top; // Use a separate pointer to traverse the list
-    while(current!= NULL){ // Loop continues as long as we haven't reached the end of the list
+    while(current!= NULL && !isEmpty(current)){ // Loop continues as long as we haven't reached the end of the list
         printf("\t%d\t%d", i, current->data); // Print index and data
         if(current == top){ // Check if this is the top of the stack
-            printf("\tTOP\n"); // Mark the top of the stack
+            printf("\tTOP"); // Mark the top of the stack
         }
         current = current->link; // Move to the next node
         i++; // Increment index

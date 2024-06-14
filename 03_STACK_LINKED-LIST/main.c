@@ -20,7 +20,7 @@ void main(){
 	stack_pop(&top);
 	printf("TOP: %d", stack_peek(top));
 	display(top);
-//	visualize(top);
+	visualize(top);
 	free(top);
 	exit(1);
 }
