@@ -13,8 +13,13 @@ int main (int argc, char *argv[]){
 	
 	display(cq);
 	deque(cq);
+	deque(cq);
+	deque(cq);
+	deque(cq);
 	display(cq);
 }
+		
+	
 
 
 

@@ -58,7 +58,8 @@ int isFull(circularQ cq){
 
 void display(circularQ *cq){
 	if(isEmpty(*cq)){
-		printf("Nothing to display circular q is empty!\n");
+		printf("\n Nothing to display circular q is empty!\n\n");
+		return;
 	}
 	int i;
 	printf("\n Front ==> %d \n", cq->data[cq->front]);
