@@ -18,7 +18,7 @@ int hashFunction(char *name, int capacity) {
     int hash = 0;
     int i;
     for (i = 0; name[i] != '\0'; i++) {
-        hash = (hash * 31 + name[i]) % capacity;
+        hash = ((hash ^ i) * 31 + name[i] + 1 + (hash ^ i)) % capacity;
     }
     return hash;
 }
