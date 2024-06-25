@@ -13,7 +13,7 @@ typedef struct node {
     struct node *link; // Pointer to the next node in the chain
 } UsrNode;
 
-// Simulates the combination of Closed and Open Hashing; Linear Probe and Separate Chaining
+// Hash Table with Linked List Data Structure
 typedef struct {
     UsrNode **table; // Array of pointers to UsrNode
     int size; // Current number of nodes
@@ -30,6 +30,5 @@ int isFull(UsrHashTable *hashTable);
 void insert(UsrHashTable *hashTable, UserPtr usr);
 UserPtr find(UsrHashTable *hashTable, char *name);
 void delete_usr(UsrHashTable *hashTable, char *name);
-/*
-void insert(UsrHashTable* hashTable, UserPtr usr);*/
+void visualize_hash(UsrHashTable *hashTable);
 #endif

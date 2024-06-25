@@ -8,14 +8,16 @@ void initHashTable(UsrHashTable* hashTable) {
     hashTable->capacity = 10;
     hashTable->threshold = 6;
     hashTable->table = (UsrNode **)malloc(hashTable->capacity * sizeof(UsrNode *));
-    for (int i = 0; i < hashTable->capacity; i++) {
+    int i; // Since for loop init declarations are allowed in C99 or C11
+	for (i = 0; i < hashTable->capacity; i++) {
         hashTable->table[i] = NULL;
     }
 }
 
 int hashFunction(char *name, int capacity) {
     int hash = 0;
-    for (int i = 0; name[i] != '\0'; i++) {
+    int i;
+    for (i = 0; name[i] != '\0'; i++) {
         hash = (hash * 31 + name[i]) % capacity;
     }
     return hash;
@@ -26,11 +28,11 @@ void resizeHashTable(UsrHashTable *hashTable) {
     hashTable->capacity *= 2;
     hashTable->threshold = (int)(hashTable->capacity * 0.65);
     UsrNode **newTable = (UsrNode **)malloc(hashTable->capacity * sizeof(UsrNode *));
-    for (int i = 0; i < hashTable->capacity; i++) {
+    int i; // Since for loop init declarations are allowed in C99 or C11
+    for (i = 0; i < hashTable->capacity; i++) {
         newTable[i] = NULL;
     }
-
-    for (int i = 0; i < oldCapacity; i++) {
+    for (i = 0; i < oldCapacity; i++) {
         UsrNode *node = hashTable->table[i];
         while (node != NULL) {
             int newIndex = hashFunction(node->usr->name, hashTable->capacity);
@@ -108,4 +110,42 @@ void delete_usr(UsrHashTable *hashTable, char *name) {
         prev = node;
         node = node->link;
     }
+}
+
+void visualize_hash(UsrHashTable *hashTable){
+	printf("\t\t\t+-----------------------------------------------------+\n");
+    printf("\t\t\t|             Hash  Table                             |\n");
+    printf("\t\t\t|  Capacity = %d       Current size = %-6d          |\n", hashTable->capacity, hashTable->size);
+    printf("\t\t\t|  Threshold = %d                                      |\n", hashTable->threshold);
+
+	int i, j = 0; 
+	if (hashTable->size > 0){
+		for (i = 0; i < hashTable->capacity; i++){
+			if(hashTable->table[i] != NULL){
+			printf("\t\t\t|-----------------------------------------------------|\n");
+			printf("\t\t\t| DATA [%d]:                                           \n", i);
+			printf("\t\t\t|     INT Key: %d                                      \n",hashFunction(hashTable->table[i]->usr->name,hashTable->capacity));
+			printf("\t\t\t|     String Key-->Name: %s                          \n",hashTable->table[i]->usr->name);
+			printf("\t\t\t|     Address: %s                              \n",hashTable->table[i]->usr->address);
+				if(hashTable->table[i]->link != NULL){
+		
+					UsrNode *current = hashTable->table[i];
+					current = current->link; // Set to the next node as it is already displayed from the previous
+					for(j = 1; current != NULL; current = current->link, j++){
+						printf("\t\t\t|                                                     |\n");	
+						printf("\t\t\t| Data[%d]->Node[%d]                                    \n", i, j);
+						printf("\t\t\t|     INT Key: %d                                      \n",hashFunction(current->usr->name,hashTable->capacity));	
+						printf("\t\t\t|     String Key-->Name: %s                          \n",current->usr->name);
+						printf("\t\t\t|     Address: %s                                  \n",current->usr->address);
+					}
+					
+				}
+			}
+		}
+	}
+   
+    printf("\t\t\t+-----------------------------------------------------+\n");
+    
+    
+
 }
