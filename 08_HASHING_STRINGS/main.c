@@ -1,7 +1,8 @@
 /*
 	CODE BY: ZYGUEL PHILIP E. CABOGOY
-	DSA SUMMER 2024
+	DSA SUMMER 2024 
 	HASHING OF STRINGS - USERNAME as KEY, User address as Value to find
+	TYPE OF HASH COLLISION MITIGATION USED: SEPARATE CHAINING
 */
 #include <stdio.h>
 #include <stdlib.h>
