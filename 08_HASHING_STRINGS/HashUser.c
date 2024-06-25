@@ -131,7 +131,8 @@ void visualize_hash(UsrHashTable *hashTable){
 		
 					UsrNode *current = hashTable->table[i];
 					current = current->link; // Set to the next node as it is already displayed from the previous
-					for(j = 1; current != NULL; current = current->link, j++){
+					j = 1; // Move Initialization HEre to make sure it resets after each loop;
+					for(; current != NULL; current = current->link, j++){
 						printf("\t\t\t|                                                     |\n");	
 						printf("\t\t\t| Data[%d]->Node[%d]                                    \n", i, j);
 						printf("\t\t\t|     INT Key: %d                                      \n",hashFunction(current->usr->name,hashTable->capacity));	
