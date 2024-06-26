@@ -81,6 +81,9 @@ void deleteProd(ProdHashTable *pht, char *key){
 		// Double Check if it finds a match
 		if(strcmp(pht->table[index]->product,key) == 0){
 			pht->table[index] = NULL;
+		}else {
+			printf("\n\nProduct Not Found\n\n");
+			return;
 		}
 	}
 	pht->size--;
