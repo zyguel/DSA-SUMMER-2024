@@ -24,14 +24,14 @@ int main(int argc, char *argv[]) {
     TreeNode* child3 = createNode(4);
     TreeNode* child4 = createNode(5);
     TreeNode* child5 = createNode(6);
-//	TreeNode* child6 = createNode(7);
+	TreeNode* child6 = createNode(7);
     // Build the tree structure
     addChild(root, child1);
     addChild(root, child2);
     addChild(child1, child3);
     addChild(child1, child4);
     addChild(child2, child5);
-//	addChild(child5, child6);
+	addChild(child5, child6);
     // Print the tree structure
     printf("Tree structure:\n");
     printTree(root, 0);
