@@ -42,6 +42,12 @@ void printTree(TreeNode* root, int level) {
 }
 
 // Find the deepest node with the maximum sum path
+
+/*
+	Weakness of this implementation is that it errors if more
+	than 1 deepest leaf nodes are equal to each other.
+
+*/
 Result findDeepestMaxSumNode(TreeNode* root) {
     Result res = {NULL, 0};
     if (root == NULL) return res;
